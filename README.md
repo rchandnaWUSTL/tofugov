@@ -134,3 +134,7 @@ cd demo/video && npm install && npm run render
 ```
 
 `docs/prd.md` has the product requirements this prototype implements (Phase 1).
+
+## License
+
+[MIT](LICENSE)
