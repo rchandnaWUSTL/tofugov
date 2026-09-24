@@ -1,0 +1,22 @@
+{
+  "name": "tofugov-demo-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "snapshots": "node scripts/cast-to-snapshots.mjs",
+    "studio": "npm run snapshots && remotion studio",
+    "render": "npm run snapshots && remotion render Demo out/tofugov-demo.mp4 && remotion render DemoNoCaptions out/tofugov-demo-no-captions.mp4 && remotion render Demo out/tofugov-demo.gif --codec=gif --every-nth-frame=2 --scale=0.5"
+  },
+  "dependencies": {
+    "@remotion/cli": "latest",
+    "@remotion/google-fonts": "latest",
+    "@xterm/headless": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "remotion": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "typescript": "latest"
+  }
+}

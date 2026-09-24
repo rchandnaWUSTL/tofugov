@@ -1,0 +1,93 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.10.0",
+  "resource_changes": [
+    {
+      "address": "terraform_data.app_config",
+      "mode": "managed",
+      "type": "terraform_data",
+      "name": "app_config",
+      "change": {
+        "actions": ["update"],
+        "before": {"id": "abc", "input": 3, "output": 3, "api_token": "s3cret-old"},
+        "after": {"id": "abc", "input": 4, "api_token": "s3cret-new"},
+        "after_unknown": {"output": true},
+        "before_sensitive": {"api_token": true},
+        "after_sensitive": {"api_token": true}
+      }
+    },
+    {
+      "address": "random_password.db_master",
+      "mode": "managed",
+      "type": "random_password",
+      "name": "db_master",
+      "change": {
+        "actions": ["delete", "create"],
+        "before": {"id": "none", "keepers": {"rotation": "2025-q4"}, "length": 32, "result": "hunter2"},
+        "after": {"keepers": {"rotation": "2026-q3"}, "length": 32},
+        "after_unknown": {"id": true, "result": true, "keepers": {}},
+        "before_sensitive": {"result": true, "keepers": {}},
+        "after_sensitive": {"result": true, "keepers": {}},
+        "replace_paths": [["keepers"]]
+      }
+    },
+    {
+      "address": "local_sensitive_file.pgpass",
+      "mode": "managed",
+      "type": "local_sensitive_file",
+      "name": "pgpass",
+      "change": {
+        "actions": ["create", "delete"],
+        "before": {"content": "db:5432:*:app:hunter2", "filename": "./out/pgpass"},
+        "after": {"filename": "./out/pgpass"},
+        "after_unknown": {"content": true, "id": true},
+        "before_sensitive": {"content": true},
+        "after_sensitive": {"content": true},
+        "replace_paths": [["content"]]
+      }
+    },
+    {
+      "address": "local_file.legacy_export[0]",
+      "mode": "managed",
+      "type": "local_file",
+      "name": "legacy_export",
+      "index": 0,
+      "change": {
+        "actions": ["delete"],
+        "before": {"filename": "./out/export.csv"},
+        "after": null,
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": false
+      }
+    },
+    {
+      "address": "random_id.new_suffix",
+      "mode": "managed",
+      "type": "random_id",
+      "name": "new_suffix",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {"byte_length": 4},
+        "after_unknown": {"id": true, "hex": true},
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "random_pet.stable",
+      "mode": "managed",
+      "type": "random_pet",
+      "name": "stable",
+      "change": {"actions": ["no-op"], "before": {"id": "x"}, "after": {"id": "x"}}
+    },
+    {
+      "address": "data.local_file.ignored",
+      "mode": "data",
+      "type": "local_file",
+      "name": "ignored",
+      "change": {"actions": ["read"]}
+    }
+  ]
+}
