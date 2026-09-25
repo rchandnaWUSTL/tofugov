@@ -25,11 +25,11 @@ const readSecs = (...texts: string[]) => NOTICE + wordCount(...texts) / (WPM / 6
 
 const COPY = {
   oldChip: 'Upgrading without tofugov',
-  oldCaption: 'Workspace 6 of 200 rotates the database password',
+  oldCaption: 'One plan of hundreds rotates the database password',
   newChip: 'Upgrading with tofugov',
-  newCaption: 'The same change, flagged without reading a plan',
+  newCaption: 'tofugov puts it at the top of the list',
   newFallback: 'Riskiest workspaces first',
-  ctaTitle: 'Try it on your workspaces',
+  ctaTitle: 'Govern your workspaces',
   ctaCommands: [
     'go install github.com/rchandnaWUSTL/tofugov/cmd/tofugov@latest',
     'tofugov upgrade --provider hashicorp/aws=6.0.0 ./workspaces/*',
@@ -179,7 +179,7 @@ const OldScene: React.FC = () => {
       <TileGrid start={S(OLD.shrink + 0.2)} />
 
       <Caption from={OLD.caption} to={OLD.captionEnd}>
-        Workspace 6 of 200 rotates the <span style={{color: colors.red}}>database password</span>
+        One plan of hundreds rotates the <span style={{color: colors.red}}>database password</span>
       </Caption>
     </AbsoluteFill>
   );
